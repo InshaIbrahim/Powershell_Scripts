@@ -1,0 +1,1 @@
+﻿.\Set-WMINameSpaceSecurity.ps1 -namespace root -operation add -account "computername\performance monitor users" -permissions "Enable Account, Remote Enable, Execute Methods, Read Security"

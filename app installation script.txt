@@ -1,0 +1,52 @@
+
+
+$pclist = @("FL11-5003",
+"FL1-MARAHEB",
+"FL5-1977",
+"FL5-2040",
+"FL7-1042"
+)
+
+
+$file = "\\sccm\SCCM client update path\CS AGENT\WindowsSensor.MaverickGyr.exe"
+$computers = @("fl8-8912")
+
+foreach ($computer in $computers){
+	Copy-Item -Path $file -Destination "\\$computer\c$\windows\Temp\WindowsSensor.MaverickGyr.exe"
+    Invoke-command -ComputerName $computer -ScriptBlock {
+       (powershell.exe c:\windows\Temp\WindowsSensor.MaverickGyr.exe /install /quiet /norestart CID=B77AAAF18EB04B2CB0F653C6322B4E4F-C6) 
+       Write-Host "The app has been installed on $(hostname)."
+       }
+}
+
+
+foreach ($pc in $pclist){
+(Get-WmiObject -Class Win32_Product -Filter "Name='Symantec Endpoint Protection'" -ComputerName fl5-2229).Uninstall()
+}
+foreach ($pcs in $pclist){
+Invoke-Command -ComputerName $pcs -ScriptBlock {(Get-WmiObject -Class Win32_Product -Filter "Name='Symantec Endpoint Protection'").Uninstall()}
+}
+	FL11-8080	
+	FL8-8833	
+(Get-WmiObject -Class Win32_Product -Filter "Name='CrowdStrike Sensor Platform'" -ComputerName fl10-1975 )
+
+
+prtg@P@ssw0rd
+
+$myArray = Import-Csv pclist.csv
+
+for($i =0; $i -lt $myArray.Length; $i++){
+
+$allPc = $myArray[$i].name
+
+Write-Host $allPc
+
+Copy-Item -Path $file -Destination "\\$computer\c$\windows\Temp\WindowsSensor.MaverickGyr.exe"
+    Invoke-command -ComputerName $allPc -ScriptBlock {
+       (powershell.exe c:\windows\Temp\WindowsSensor.MaverickGyr.exe /install /quiet /norestart CID=B77AAAF18EB04B2CB0F653C6322B4E4F-C6) 
+       Write-Host "The app has been installed on $(hostname)."
+       }
+
+
+
+}

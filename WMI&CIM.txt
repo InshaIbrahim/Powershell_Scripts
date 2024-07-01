@@ -1,0 +1,9 @@
+Get-CimClass
+
+get-wmiobject -list
+
+ get-wmiobject -list -Class "process*"
+get-cimclass -classname "process*"
+
+
+ get-wmiobject -Class Win32_bios | select *

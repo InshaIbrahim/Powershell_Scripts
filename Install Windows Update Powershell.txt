@@ -1,0 +1,44 @@
+Install Windows Update Powershell
+
+Pre-requisites
+
+Install-Module PSWindowsUpdate
+Add-WUServiceManager -MicrosoftUpdate
+
+
+
+Get-WindowsUpdate
+
+
+
+Install all available updates
+
+
+Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | Out-File "C:\($env.computername-Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force
+
+
+
+Force other computers to update
+
+
+$Computers = "pc2,pc3,pc4"
+Invoke-WUJob -ComputerName $Computers -Script {Import-Module PSWindowsUpdate; Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot} -RunNow -Confirm:$false | Out-File "c:\$Computers-$(Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force
+
+
+Invoke-Command -ComputerName  $pc -ScriptBlock {Install-Module PSWindowsUpdate}
+
+Invoke-Command -ComputerName $pc -ScriptBlock {Import-Module PSWindowsUpdate; Enable-WURemoting}
+
+ Invoke-Command -ComputerName $pc -ScriptBlock {Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force}
+
+
+
+$file = "\\sccm\SCCM client update path\CS AGENT\WindowsSensor.MaverickGyr.exe"
+$computers = 'basmab-pc'
+foreach ($computer in $computers){
+	Copy-Item -Path $file -Destination "\\$computer\c$\windows\Temp\WindowsSensor.MaverickGyr.exe"
+    Invoke-command -ComputerName $computer -ScriptBlock {
+       (powershell.exe c:\windows\Temp\WindowsSensor.MaverickGyr.exe /install /quiet /norestart CID=B77AAAF18EB04B2CB0F653C6322B4E4F-C6) 
+       Write-Host "The app has been installed on $(hostname)."
+       }
+}

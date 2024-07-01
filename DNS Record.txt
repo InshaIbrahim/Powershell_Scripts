@@ -1,0 +1,16 @@
+
+
+Cname
+
+Host Name: selector1._domainkey     value: selector1-mona-gov-kw._domainkey.monakwt.onmicrosoft.com
+
+Host Name: selector2._domainkey     value: selector2-mona-gov-kw._domainkey.monakwt.onmicrosoft.com
+
+
+Text
+
+Host Name:  _dmarc.mona.gov.kw      value: v=DMARC1;p=none;pct=100;rua=mailto:support@mona.gov.kw;ruf=mailto:support@mona.gov.kw;ri=86400;fo=1;
+
+
+ Text
+Host Name:  _dmarc.mona.gov.kw      value: v=DMARC1;p=quarantine;pct=100;rua=mailto:support@mona.gov.kw;ruf=mailto:support@mona.gov.kw;ri=86400;fo=1;

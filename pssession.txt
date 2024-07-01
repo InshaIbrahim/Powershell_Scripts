@@ -1,0 +1,4 @@
+pssession
+
+Enter-PSSession mona-adconnect
+

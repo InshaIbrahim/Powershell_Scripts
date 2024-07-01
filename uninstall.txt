@@ -1,0 +1,24 @@
+(Get-WmiObject -Class Win32_Product -Filter "Name='Symantec Endpoint Protection'" -ComputerName . ).Uninstall()
+
+
+(Get-WmiObject -Class Win32_Product -Filter "Name='Symantec Endpoint Protection'" -ComputerName mona-adconnect).Uninstall()
+
+
+$pcs =@("TAHANI-PC","RAWAN-FL11","MODI","FL1-8525","FL1-1596","FL11281","FL1-1219","FL1-1025","1FL9302")
+
+(Get-WmiObject -Class Win32_Product -Filter "Name='Symantec Endpoint Protection'" -ComputerName $pcs).Uninstall()
+
+
+P@ssword2024
+
+WindowsSensor.MaverickGyr.exe /install /quiet /norestart CID=XXXXXXX
+
+/install /quiet /norestart CID=B77AAAF18EB04B2CB0F653C6322B4E4F-C6
+
+
+M0n@@)@$
+
+\\sccm\SCCM client update path\CS AGENT\WindowsSensor.MaverickGyr.exe /install /quiet /norestart CID=B77AAAF18EB04B2CB0F653C6322B4E4F-C6
+
+
+$pcs =@("FL12-5538","FLOOR12-3223")

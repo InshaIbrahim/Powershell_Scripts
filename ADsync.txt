@@ -1,0 +1,4 @@
+ADsync
+
+
+Start-ADSyncSyncCycle -PolicyType Initial

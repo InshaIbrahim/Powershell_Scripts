@@ -1,0 +1,4 @@
+Current usre logged in windows
+
+
+get-wmiobject -Class Win32_Computersystem | select Username
